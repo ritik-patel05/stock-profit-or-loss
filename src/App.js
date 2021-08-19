@@ -9,6 +9,7 @@ function App() {
 	const [isProfitOrLoss, setIsProfitOrLoss] = useState('none');
 
 	const calculateProfitOrLoss = () => {
+		setIsProfitOrLoss('none');
 		if (!initialPrice || initialPrice <= 0) {
 			setResult('Invalid Initial Price');
 			return;
