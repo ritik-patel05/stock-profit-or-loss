@@ -11,16 +11,19 @@ function App() {
 	const calculateProfitOrLoss = () => {
 		if (!initialPrice || initialPrice <= 0) {
 			setResult('Invalid Initial Price');
+			setIsProfitOrLoss('none');
 			return;
 		}
 
 		if (!quantity || quantity <= 0) {
 			setResult('Invalid Quantity');
+			setIsProfitOrLoss('none');
 			return;
 		}
 
 		if (!currentPrice || currentPrice <= 0) {
 			setResult('Invalid Current Price');
+			setIsProfitOrLoss('none');
 			return;
 		}
 
