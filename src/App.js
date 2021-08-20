@@ -27,9 +27,11 @@ function App() {
 			return;
 		}
 
-		const netProfitOrLoss =
-			Math.abs(initialPrice - currentPrice) * quantity;
-		const percentage = (netProfitOrLoss / initialPrice) * 100;
+		let netProfitOrLoss = Math.abs(initialPrice - currentPrice) * quantity;
+		let percentage = (netProfitOrLoss / initialPrice) * 100;
+
+		netProfitOrLoss = netProfitOrLoss.toFixed(2);
+		percentage = percentage.toFixed(2);
 
 		if (currentPrice < initialPrice) {
 			setResult(
