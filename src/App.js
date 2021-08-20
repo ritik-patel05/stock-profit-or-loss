@@ -9,7 +9,6 @@ function App() {
 	const [isProfitOrLoss, setIsProfitOrLoss] = useState('none');
 
 	const calculateProfitOrLoss = () => {
-		setIsProfitOrLoss('none');
 		if (!initialPrice || initialPrice <= 0) {
 			setResult('Invalid Initial Price');
 			return;
@@ -25,26 +24,23 @@ function App() {
 			return;
 		}
 
-		if (currentPrice < initialPrice) {
-			setIsProfitOrLoss('loss');
-		} else if (currentPrice > initialPrice) {
-			setIsProfitOrLoss('profit');
-		}
-
 		const netProfitOrLoss =
 			Math.abs(initialPrice - currentPrice) * quantity;
 		const percentage = (netProfitOrLoss / initialPrice) * 100;
 
-		if (isProfitOrLoss === 'loss') {
+		if (currentPrice < initialPrice) {
 			setResult(
 				`The loss is ${netProfitOrLoss}, and the loss percentage is ${percentage}%`
 			);
-		} else if (isProfitOrLoss === 'profit') {
+			setIsProfitOrLoss('loss');
+		} else if (currentPrice > initialPrice) {
 			setResult(
 				`The profit is ${netProfitOrLoss}, and the profit percentage is ${percentage}%`
 			);
+			setIsProfitOrLoss('profit');
 		} else {
 			setResult('Neither Loss nor Profit.');
+			setIsProfitOrLoss('none');
 		}
 	};
 
